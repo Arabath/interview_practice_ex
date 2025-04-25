@@ -1,13 +1,13 @@
 function updateInventory(curInv, newInv) {
     // Check each item of new inventory
     for(let newItem of newInv) {
-        let found = false;
+        let found = false; //flag
         // Check against current inventory
         for(let oldItem of curInv) {
             //Update value if new item is found
             if(newItem[1] === oldItem[1]) {
-                oldItem[0] += newItem[0];
-                found = true
+                oldItem[0] += newItem[0]; //--> Updates quantity of an existing item
+                found = true //flag
                 break
             }
         }
@@ -25,33 +25,32 @@ function updateInventory(curInv, newInv) {
 
 /*
 Code Explanation
-Here we use a nested loop to locate the value of the new item in the old inventory array and update it.
-If the new item is not found, the it is added to the end of the old array.
-Lastly, the original array is sorted.
-Note, this mutates the input array.
+La función actualiza y fusiona dos inventarios
+y luego los devuelve ordenados por nombre. 
+Muy útil para sistemas de inventario básicos.
 */
 
 
 //Example
 var curInv = [
-    [21, "Bowling Ball"],
-    [2, "Dirty Sock"],
-    [1, "Hair Pin"],
-    [5, "Microphone"]
+    [21, "Bow"],
+    [2, "Arrow"],
+    [5, "Helmet"]
 ];
 
 var newInv = [
-    [2, "Hair Pin"],
-    [3, "Half-Eaten Apple"],
-    [67, "Bowling Ball"],
-    [7, "Toothpaste"]
+    [3, "Arrow"],
+    [7, "Bow"],
+    [1, "Boots"],
+    [2, "Helmet"],
+    [5, "Gloves"]
 ];
 
 const result = updateInventory(curInv, newInv);
 console.log("result", result)
 
 //////////////////////////////////////////////////////////////////////
-
+/*
 function updateInventory2(currentInventory, newInventory) {
     const combinedInventory = {}
     
@@ -69,12 +68,12 @@ function updateInventory2(currentInventory, newInventory) {
         .map(item => [combinedInventory[item], item])
 }
 
-/*
+
 Code Explanation
 In this solution, we use an object as a hash table to de-nest the two loops. 
 This approach trades time complexity for space complexity.
 In this case, the input array is not mutated.
-*/
+
 
 //Example
 var currentInventory = [
@@ -94,3 +93,4 @@ var newInventory = [
 const result2 = updateInventory2(currentInventory, newInventory)
 console.log("result2",result2)
 
+*/
